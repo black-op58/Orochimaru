@@ -1,1 +1,5 @@
-<resources>    <style name="Widget.SaninTV.AppWidget.Container" parent="android:Widget">        <item name="android:id">@android:id/background</item>        <item name="android:background">?android:attr/colorBackground</item>    </style>    <style name="Widget.SaninTV.AppWidget.InnerView" parent="android:Widget">        <item name="android:background">?android:attr/colorBackground</item>        <item name="android:textColor">?android:attr/textColorPrimary</item>    </style></resources>
+<resources>    <style name="Widget.SaninTV.AppWidget.Container" parent="android:Widget">        <item name="android:id">@android:id/background</item>        <item name="android:background">?android:attr/colorBackground</item>    </style>    <style name="Widget.SaninTV.AppWidget.InnerView" parent="android:Widget">        <item name="android:background">?android:attr/colorBackground</item>        <item name="android:textColor">?android:attr/textColorPrimary</item>    </style>    <style name="ShapeAppearanceOverlay.Material3.ImageList.Circle" parent="ShapeAppearanceOverlay.Material3.CenterComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

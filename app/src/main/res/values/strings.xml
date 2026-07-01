@@ -513,6 +513,7 @@
     <string name="skip_time_info">Duration to skip when tapping the skip button (seconds)</string>
     <string name="slogan">Your anime, your way.</string>
     <string name="small_view">Small View</string>
+    <string name="sort_by">Sort By</string>
     <string name="sort_by_last_updated">Last Updated</string>
     <string name="sort_by_release_date">Release Date</string>
     <string name="sort_by_score">Score</string>
