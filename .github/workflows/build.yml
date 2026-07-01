@@ -26,20 +26,36 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: List available Gradle wrapper
+        run: |
+          java -version
+          ls -la gradle/wrapper/
+
       - name: Build Debug APK (googleDebug)
-        run: ./gradlew assembleGoogleDebug
+        run: |
+          ./gradlew assembleGoogleDebug --no-daemon --stacktrace 2>&1 | tail -50
+
+      - name: Find APK files
+        run: |
+          find app/build -name "*.apk" 2>/dev/null || echo "No APKs found"
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
+        if: success()
         with:
           name: SaninTV-googleDebug
-          path: app/build/outputs/apk/google/debug/*.apk
+          path: app/build/outputs/apk/**/*.apk
+          if-no-files-found: warn
 
       - name: Build Alpha APK (googleAlpha)
-        run: ./gradlew assembleGoogleAlpha
+        if: success()
+        run: |
+          ./gradlew assembleGoogleAlpha --no-daemon --stacktrace 2>&1 | tail -50
 
       - name: Upload Alpha APK
         uses: actions/upload-artifact@v4
+        if: success()
         with:
           name: SaninTV-googleAlpha
-          path: app/build/outputs/apk/google/alpha/*.apk
+          path: app/build/outputs/apk/**/*.apk
+          if-no-files-found: warn
