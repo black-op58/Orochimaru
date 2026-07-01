@@ -26,8 +26,17 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: List Gradle wrapper files
+        run: |
+          java -version
+          ls -la gradle/wrapper/
+
       - name: Build Debug APK (googleDebug)
         run: ./gradlew assembleGoogleDebug --no-daemon --stacktrace
+
+      - name: Find and list APKs
+        run: |
+          find . -name "*.apk" -type f -print | head -20
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
@@ -37,7 +46,6 @@ jobs:
           path: app/build/outputs/apk/**/*.apk
 
       - name: Build Alpha APK (googleAlpha)
-        if: success()
         run: ./gradlew assembleGoogleAlpha --no-daemon --stacktrace
 
       - name: Upload Alpha APK
